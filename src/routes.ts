@@ -3,9 +3,10 @@ import { createCheerioRouter, Dataset } from 'crawlee';
 export const router = createCheerioRouter();
 
 router.addDefaultHandler(async ({ $, enqueueLinks, request, log }) => {
-    const profileUrls: string[] = $('ul.directory-list h3.company_info > a').map((_, element) => {
-        return $(element).attr('href');
+    const profileUrls = $('ul.directory-list h3.company_info > a').map((_, element) => {
+        return { url: $(element).attr('href') };
     }).get();
+
     await Dataset.pushData(profileUrls);
 
     // Find the "Next" button and enqueue the next page of results (if it exists)
