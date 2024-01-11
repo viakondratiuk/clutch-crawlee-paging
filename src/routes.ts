@@ -3,8 +3,8 @@ import { createCheerioRouter, Dataset } from 'crawlee';
 export const router = createCheerioRouter();
 
 router.addDefaultHandler(async ({ $, enqueueLinks, request, log }) => {
-    const profileUrls = $('ul.directory-list h3.company_info > a').map((_, element) => {
-        return { url: $(element).attr('href') };
+    const profileUrls = $('ul.directory-list li.website-profile > a').map((_, element) => {
+        return { url: `https://clutch.com${$(element).attr('href')}` };
     }).get();
 
     await Dataset.pushData(profileUrls);
