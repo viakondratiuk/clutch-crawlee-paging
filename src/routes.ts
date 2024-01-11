@@ -1,10 +1,12 @@
 import { createCheerioRouter, Dataset } from 'crawlee';
 
 export const router = createCheerioRouter();
+const CLUTCH_URL = 'https://clutch.co';
+
 
 router.addDefaultHandler(async ({ $, enqueueLinks, request, log }) => {
     const profileUrls = $('ul.directory-list li.website-profile > a').map((_, element) => {
-        return { url: `https://clutch.com${$(element).attr('href')}` };
+        return { url: `${CLUTCH_URL}${$(element).attr('href')}` };
     }).get();
 
     await Dataset.pushData(profileUrls);
