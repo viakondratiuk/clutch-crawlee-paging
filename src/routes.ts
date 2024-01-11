@@ -5,7 +5,9 @@ const CLUTCH_URL = 'https://clutch.co';
 
 
 router.addDefaultHandler(async ({ $, enqueueLinks, request, log }) => {
-    const profileUrls = $('ul.directory-list li.website-profile > a').map((_, element) => {
+    const urls = $('ul.directory-list li.website-profile > a');
+    log.info(`Found links: ${urls.length}`);
+    const profileUrls = urls.map((_, element) => {
         return { url: `${CLUTCH_URL}${$(element).attr('href')}` };
     }).get();
 
