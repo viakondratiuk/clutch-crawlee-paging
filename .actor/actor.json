@@ -1,0 +1,12 @@
+{
+    "actorSpecification": 1,
+    "name": "clutch-crawlee-paging",
+    "title": "Clutch Crawlee Paging",
+    "description": "Crawlee and Cheerio project in typescript.",
+    "version": "0.0",
+    "meta": {
+        "templateId": "ts-crawlee-cheerio"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile"
+}
